@@ -58,24 +58,24 @@ function CryptoCurrencies() {
             </tr>
           </thead>
           <tbody>
-            {crypto.map((value) => {
+            {crypto.map((currency) => {
               return (
-                <tr key={value.id}>
-                  <td>{value.name}</td>
-                  <td>€ {value.quote.EUR.price.toFixed(3)}</td>
+                <tr key={currency.id}>
+                  <td>{currency.name}</td>
+                  <td>€ {currency.quote.EUR.price.toFixed(3)}</td>
                   <td
                     style={{
                       color: `${color(
-                        value.quote.EUR.percent_change_1h.toFixed(3)
+                        currency.quote.EUR.percent_change_1h.toFixed(3)
                       )}`,
                     }}
                   >
-                    {value.quote.EUR.percent_change_1h.toFixed(3)}%
+                    {currency.quote.EUR.percent_change_1h.toFixed(3)}%
                   </td>
                   <td>
-                    {value.last_updated.slice(11, 19) +
+                    {currency.last_updated.slice(11, 19) +
                       " " +
-                      value.last_updated
+                      currency.last_updated
                         .slice(0, 10)
                         .split("-")
                         .reverse()
