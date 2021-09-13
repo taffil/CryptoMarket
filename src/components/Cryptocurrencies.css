@@ -6,6 +6,6 @@
 table>tbody>tr>td {
     border: 1px solid black;
 }
-.refresh_btn>.btn:hover {
+.btn:hover {
     cursor: pointer;
 }
