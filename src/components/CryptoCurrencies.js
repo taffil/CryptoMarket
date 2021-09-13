@@ -17,6 +17,8 @@ function CryptoCurrencies() {
   useEffect(() => {
     axios.get(url).then((response) => {
       setCrypto(response.data.data);
+
+      //loged data
       console.log(response.data.data);
     });
   }, [url]);
@@ -65,11 +67,11 @@ function CryptoCurrencies() {
               <td
                 style={{
                   color: `${color(
-                    crypto[0].quote.EUR.percent_change_1h.toFixed(2)
+                    crypto[0].quote.EUR.percent_change_1h.toFixed(3)
                   )}`,
                 }}
               >
-                {crypto[0].quote.EUR.percent_change_1h.toFixed(2)}%
+                {crypto[0].quote.EUR.percent_change_1h.toFixed(3)}%
               </td>
               <td>
                 {crypto[0].last_updated.slice(11, 19) +
@@ -87,11 +89,11 @@ function CryptoCurrencies() {
               <td
                 style={{
                   color: `${color(
-                    crypto[1].quote.EUR.percent_change_1h.toFixed(2)
+                    crypto[1].quote.EUR.percent_change_1h.toFixed(3)
                   )}`,
                 }}
               >
-                {crypto[1].quote.EUR.percent_change_1h.toFixed(2)}%
+                {crypto[1].quote.EUR.percent_change_1h.toFixed(3)}%
               </td>
               <td>
                 {crypto[1].last_updated.slice(11, 19)}{" "}
@@ -108,11 +110,11 @@ function CryptoCurrencies() {
               <td
                 style={{
                   color: `${color(
-                    crypto[2].quote.EUR.percent_change_1h.toFixed(2)
+                    crypto[2].quote.EUR.percent_change_1h.toFixed(3)
                   )}`,
                 }}
               >
-                {crypto[2].quote.EUR.percent_change_1h.toFixed(2)}%
+                {crypto[2].quote.EUR.percent_change_1h.toFixed(3)}%
               </td>
               <td>
                 {crypto[2].last_updated.slice(11, 19)}{" "}
@@ -129,11 +131,11 @@ function CryptoCurrencies() {
               <td
                 style={{
                   color: `${color(
-                    crypto[3].quote.EUR.percent_change_1h.toFixed(2)
+                    crypto[3].quote.EUR.percent_change_1h.toFixed(3)
                   )}`,
                 }}
               >
-                {crypto[3].quote.EUR.percent_change_1h.toFixed(2)}%
+                {crypto[3].quote.EUR.percent_change_1h.toFixed(3)}%
               </td>
               <td>
                 {crypto[3].last_updated.slice(11, 19)}{" "}
@@ -150,11 +152,11 @@ function CryptoCurrencies() {
               <td
                 style={{
                   color: `${color(
-                    crypto[4].quote.EUR.percent_change_1h.toFixed(2)
+                    crypto[4].quote.EUR.percent_change_1h.toFixed(3)
                   )}`,
                 }}
               >
-                {crypto[4].quote.EUR.percent_change_1h.toFixed(2)}%
+                {crypto[4].quote.EUR.percent_change_1h.toFixed(3)}%
               </td>
               <td>
                 {crypto[4].last_updated.slice(11, 19)}{" "}
@@ -171,11 +173,11 @@ function CryptoCurrencies() {
               <td
                 style={{
                   color: `${color(
-                    crypto[5].quote.EUR.percent_change_1h.toFixed(2)
+                    crypto[5].quote.EUR.percent_change_1h.toFixed(3)
                   )}`,
                 }}
               >
-                {crypto[5].quote.EUR.percent_change_1h.toFixed(2)}%
+                {crypto[5].quote.EUR.percent_change_1h.toFixed(3)}%
               </td>
               <td>
                 {crypto[5].last_updated.slice(11, 19)}{" "}
@@ -192,11 +194,11 @@ function CryptoCurrencies() {
               <td
                 style={{
                   color: `${color(
-                    crypto[6].quote.EUR.percent_change_1h.toFixed(2)
+                    crypto[6].quote.EUR.percent_change_1h.toFixed(3)
                   )}`,
                 }}
               >
-                {crypto[6].quote.EUR.percent_change_1h.toFixed(2)}%
+                {crypto[6].quote.EUR.percent_change_1h.toFixed(3)}%
               </td>
               <td>
                 {crypto[6].last_updated.slice(11, 19)}{" "}
@@ -213,11 +215,11 @@ function CryptoCurrencies() {
               <td
                 style={{
                   color: `${color(
-                    crypto[7].quote.EUR.percent_change_1h.toFixed(2)
+                    crypto[7].quote.EUR.percent_change_1h.toFixed(3)
                   )}`,
                 }}
               >
-                {crypto[7].quote.EUR.percent_change_1h.toFixed(2)}%
+                {crypto[7].quote.EUR.percent_change_1h.toFixed(3)}%
               </td>
               <td>
                 {crypto[7].last_updated.slice(11, 19)}{" "}
@@ -234,11 +236,11 @@ function CryptoCurrencies() {
               <td
                 style={{
                   color: `${color(
-                    crypto[8].quote.EUR.percent_change_1h.toFixed(2)
+                    crypto[8].quote.EUR.percent_change_1h.toFixed(3)
                   )}`,
                 }}
               >
-                {crypto[8].quote.EUR.percent_change_1h.toFixed(2)}%
+                {crypto[8].quote.EUR.percent_change_1h.toFixed(3)}%
               </td>
               <td>
                 {crypto[8].last_updated.slice(11, 19)}{" "}
@@ -255,11 +257,11 @@ function CryptoCurrencies() {
               <td
                 style={{
                   color: `${color(
-                    crypto[9].quote.EUR.percent_change_1h.toFixed(2)
+                    crypto[9].quote.EUR.percent_change_1h.toFixed(3)
                   )}`,
                 }}
               >
-                {crypto[9].quote.EUR.percent_change_1h.toFixed(2)}%
+                {crypto[9].quote.EUR.percent_change_1h.toFixed(3)}%
               </td>
               <td>
                 {crypto[9].last_updated.slice(11, 19)}{" "}
