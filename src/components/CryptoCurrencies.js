@@ -45,6 +45,7 @@ function CryptoCurrencies() {
               <th>Name</th>
               <th>Price in EUR</th>
               <th>Change in 1h</th>
+              <th>Change in 24h</th>
               <th>
                 Last Updated{" "}
                 <button
@@ -71,6 +72,15 @@ function CryptoCurrencies() {
                     }}
                   >
                     {currency.quote.EUR.percent_change_1h.toFixed(3)}%
+                  </td>
+                  <td
+                    style={{
+                      color: `${color(
+                        currency.quote.EUR.percent_change_24h.toFixed(3)
+                      )}`,
+                    }}
+                  >
+                    {currency.quote.EUR.percent_change_24h.toFixed(3)}%
                   </td>
                   <td>
                     {currency.last_updated.slice(11, 19) +
