@@ -28,6 +28,24 @@ function CryptoCurrencies() {
   }
 
   if (crypto) {
+    let name = crypto[0].name;
+    let price = crypto[0].quote.EUR.price.toFixed(3);
+    let percent_change_1h = crypto[0].quote.EUR.percent_change_1h.toFixed(2);
+    let last_updated =
+      crypto[0].last_updated.slice(11, 19) +
+      " " +
+      crypto[0].last_updated.slice(0, 10).split("-").reverse().join("/");
+
+    const color = () => {
+      let cl;
+      if (percent_change_1h > 0) {
+        cl = "green";
+      } else {
+        cl = "red";
+      }
+      return cl;
+    };
+
     content = (
       <div className="main">
         <table className="table">
@@ -50,23 +68,22 @@ function CryptoCurrencies() {
           </thead>
           <tbody>
             <tr>
-              <td>{crypto[0].name}</td>
-              <td>€ {crypto[0].quote.EUR.price.toFixed(3)}</td>
-              <td>{crypto[0].quote.EUR.percent_change_1h.toFixed(2)}%</td>
-              <td>
-                {crypto[0].last_updated.slice(11,19)}
-                {" "}
-                {crypto[0].last_updated.slice(0,10).split("-").reverse().join("/")}
-              </td>
+              <td>{name}</td>
+              <td>€ {price}</td>
+              <td style={{ color: `${color()}` }}>{percent_change_1h}%</td>
+              <td>{last_updated}</td>
             </tr>
             <tr>
               <td>{crypto[1].name}</td>
               <td>€ {crypto[1].quote.EUR.price.toFixed(3)}</td>
               <td>{crypto[1].quote.EUR.percent_change_1h.toFixed(2)}%</td>
               <td>
-                {crypto[1].last_updated.slice(11,19)}
-                {" "}
-                {crypto[1].last_updated.slice(0,10).split("-").reverse().join("/")}
+                {crypto[1].last_updated.slice(11, 19)}{" "}
+                {crypto[1].last_updated
+                  .slice(0, 10)
+                  .split("-")
+                  .reverse()
+                  .join("/")}
               </td>
             </tr>
             <tr>
@@ -74,9 +91,12 @@ function CryptoCurrencies() {
               <td>€ {crypto[2].quote.EUR.price.toFixed(3)}</td>
               <td>{crypto[2].quote.EUR.percent_change_1h.toFixed(2)}%</td>
               <td>
-                {crypto[2].last_updated.slice(11,19)}
-                {" "}
-                {crypto[2].last_updated.slice(0,10).split("-").reverse().join("/")}
+                {crypto[2].last_updated.slice(11, 19)}{" "}
+                {crypto[2].last_updated
+                  .slice(0, 10)
+                  .split("-")
+                  .reverse()
+                  .join("/")}
               </td>
             </tr>
             <tr>
@@ -84,9 +104,12 @@ function CryptoCurrencies() {
               <td>€ {crypto[3].quote.EUR.price.toFixed(3)}</td>
               <td>{crypto[3].quote.EUR.percent_change_1h.toFixed(2)}%</td>
               <td>
-                {crypto[3].last_updated.slice(11,19)}
-                {" "}
-                {crypto[3].last_updated.slice(0,10).split("-").reverse().join("/")}
+                {crypto[3].last_updated.slice(11, 19)}{" "}
+                {crypto[3].last_updated
+                  .slice(0, 10)
+                  .split("-")
+                  .reverse()
+                  .join("/")}
               </td>
             </tr>
             <tr>
@@ -94,9 +117,12 @@ function CryptoCurrencies() {
               <td>€ {crypto[4].quote.EUR.price.toFixed(3)}</td>
               <td>{crypto[4].quote.EUR.percent_change_1h.toFixed(2)}%</td>
               <td>
-                {crypto[4].last_updated.slice(11,19)}
-                {" "}
-                {crypto[4].last_updated.slice(0,10).split("-").reverse().join("/")}
+                {crypto[4].last_updated.slice(11, 19)}{" "}
+                {crypto[4].last_updated
+                  .slice(0, 10)
+                  .split("-")
+                  .reverse()
+                  .join("/")}
               </td>
             </tr>
             <tr>
@@ -104,9 +130,12 @@ function CryptoCurrencies() {
               <td>€ {crypto[5].quote.EUR.price.toFixed(3)}</td>
               <td>{crypto[5].quote.EUR.percent_change_1h.toFixed(2)}%</td>
               <td>
-                {crypto[5].last_updated.slice(11,19)}
-                {" "}
-                {crypto[5].last_updated.slice(0,10).split("-").reverse().join("/")}
+                {crypto[5].last_updated.slice(11, 19)}{" "}
+                {crypto[5].last_updated
+                  .slice(0, 10)
+                  .split("-")
+                  .reverse()
+                  .join("/")}
               </td>
             </tr>
             <tr>
@@ -114,9 +143,12 @@ function CryptoCurrencies() {
               <td>€ {crypto[6].quote.EUR.price.toFixed(3)}</td>
               <td>{crypto[6].quote.EUR.percent_change_1h.toFixed(2)}%</td>
               <td>
-                {crypto[6].last_updated.slice(11,19)}
-                {" "}
-                {crypto[6].last_updated.slice(0,10).split("-").reverse().join("/")}
+                {crypto[6].last_updated.slice(11, 19)}{" "}
+                {crypto[6].last_updated
+                  .slice(0, 10)
+                  .split("-")
+                  .reverse()
+                  .join("/")}
               </td>
             </tr>
             <tr>
@@ -124,9 +156,12 @@ function CryptoCurrencies() {
               <td>€ {crypto[7].quote.EUR.price.toFixed(3)}</td>
               <td>{crypto[7].quote.EUR.percent_change_1h.toFixed(2)}%</td>
               <td>
-                {crypto[7].last_updated.slice(11,19)}
-                {" "}
-                {crypto[7].last_updated.slice(0,10).split("-").reverse().join("/")}
+                {crypto[7].last_updated.slice(11, 19)}{" "}
+                {crypto[7].last_updated
+                  .slice(0, 10)
+                  .split("-")
+                  .reverse()
+                  .join("/")}
               </td>
             </tr>
             <tr>
@@ -134,9 +169,12 @@ function CryptoCurrencies() {
               <td>€ {crypto[8].quote.EUR.price.toFixed(3)}</td>
               <td>{crypto[8].quote.EUR.percent_change_1h.toFixed(2)}%</td>
               <td>
-                {crypto[8].last_updated.slice(11,19)}
-                {" "}
-                {crypto[8].last_updated.slice(0,10).split("-").reverse().join("/")}
+                {crypto[8].last_updated.slice(11, 19)}{" "}
+                {crypto[8].last_updated
+                  .slice(0, 10)
+                  .split("-")
+                  .reverse()
+                  .join("/")}
               </td>
             </tr>
             <tr>
@@ -144,9 +182,12 @@ function CryptoCurrencies() {
               <td>€ {crypto[9].quote.EUR.price.toFixed(3)}</td>
               <td>{crypto[9].quote.EUR.percent_change_1h.toFixed(2)}%</td>
               <td>
-                {crypto[9].last_updated.slice(11,19)}
-                {" "}
-                {crypto[9].last_updated.slice(0,10).split("-").reverse().join("/")}
+                {crypto[9].last_updated.slice(11, 19)}{" "}
+                {crypto[9].last_updated
+                  .slice(0, 10)
+                  .split("-")
+                  .reverse()
+                  .join("/")}
               </td>
             </tr>
           </tbody>
