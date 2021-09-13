@@ -28,7 +28,6 @@ function CryptoCurrencies() {
       setCrypto(response.data.data);
     });
   }
-
   if (crypto) {
     function color(props) {
       if (props > 0) {
@@ -61,8 +60,7 @@ function CryptoCurrencies() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>{crypto[0].name}</td>
+            {/* <td>{crypto[0].name}</td>
               <td>€ {crypto[0].quote.EUR.price.toFixed(3)}</td>
               <td
                 style={{
@@ -81,9 +79,34 @@ function CryptoCurrencies() {
                     .split("-")
                     .reverse()
                     .join("/")}
-              </td>
-            </tr>
-            <tr>
+              </td> */}
+            {crypto.map((value) => {
+              return (
+                <tr key={value.id}>
+                  <td>{value.name}</td>
+                  <td>€ {value.quote.EUR.price.toFixed(3)}</td>
+                  <td
+                    style={{
+                      color: `${color(
+                        value.quote.EUR.percent_change_1h.toFixed(3)
+                      )}`,
+                    }}
+                  >
+                    {value.quote.EUR.percent_change_1h.toFixed(3)}%
+                  </td>
+                  <td>
+                    {value.last_updated.slice(11, 19) +
+                      " " +
+                      value.last_updated
+                        .slice(0, 10)
+                        .split("-")
+                        .reverse()
+                        .join("/")}
+                  </td>
+                </tr>
+              );
+            })}
+            {/* <tr>
               <td>{crypto[1].name}</td>
               <td>€ {crypto[1].quote.EUR.price.toFixed(3)}</td>
               <td
@@ -271,7 +294,7 @@ function CryptoCurrencies() {
                   .reverse()
                   .join("/")}
               </td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </div>
