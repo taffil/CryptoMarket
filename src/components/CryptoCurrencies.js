@@ -47,7 +47,7 @@ function CryptoCurrencies() {
               <th>Change in 1h</th>
               <th>Change in 24h</th>
               <th>
-                Last Updated{" "}
+                Last Updated
                 <button
                   style={{ float: "right" }}
                   className="btn"
@@ -60,37 +60,29 @@ function CryptoCurrencies() {
           </thead>
           <tbody>
             {crypto.map((currency) => {
+              let id = currency.id;
+              let name = currency.name;
+              let price = currency.quote.EUR.price.toFixed(3);
+              let change_1h = currency.quote.EUR.percent_change_1h.toFixed(3);
+              let change_24h = currency.quote.EUR.percent_change_24h.toFixed(3);
+              let last_updated =
+                currency.last_updated.slice(11, 19) +
+                " " +
+                currency.last_updated
+                  .slice(0, 10)
+                  .split("-")
+                  .reverse()
+                  .join("/");
+
               return (
-                <tr key={currency.id}>
-                  <td>{currency.name}</td>
-                  <td>€ {currency.quote.EUR.price.toFixed(3)}</td>
-                  <td
-                    style={{
-                      color: `${color(
-                        currency.quote.EUR.percent_change_1h.toFixed(3)
-                      )}`,
-                    }}
-                  >
-                    {currency.quote.EUR.percent_change_1h.toFixed(3)}%
+                <tr key={id}>
+                  <td>{name}</td>
+                  <td>€ {price}</td>
+                  <td style={{ color: `${color(change_1h)}` }}>{change_1h}%</td>
+                  <td style={{ color: `${color(change_24h)}` }}>
+                    {change_24h}%
                   </td>
-                  <td
-                    style={{
-                      color: `${color(
-                        currency.quote.EUR.percent_change_24h.toFixed(3)
-                      )}`,
-                    }}
-                  >
-                    {currency.quote.EUR.percent_change_24h.toFixed(3)}%
-                  </td>
-                  <td>
-                    {currency.last_updated.slice(11, 19) +
-                      " " +
-                      currency.last_updated
-                        .slice(0, 10)
-                        .split("-")
-                        .reverse()
-                        .join("/")}
-                  </td>
+                  <td>{last_updated}</td>
                 </tr>
               );
             })}
