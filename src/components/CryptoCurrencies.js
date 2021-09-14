@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+// import cors from 'cors'
 
 import "./CryptoCurrencies.css";
 
@@ -15,12 +16,19 @@ function CryptoCurrencies() {
 
   let content = null;
   useEffect(() => {
-    axios.get(url).then((response) => {
-      setCrypto(response.data.data);
+    axios
+      .get(url, {
+          headers: {
+            'Access-Control-Allow-Origin': 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=90367cf3-777f-4541-81a9-2fd2b6e4acd5&start=1&limit=10&convert=EUR',
+            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+          }
+      })
+      .then((response) => {
+        setCrypto(response.data.data);
 
-      //loged data
-      console.log(response.data.data);
-    });
+        //loged data
+        console.log(response);
+      });
   }, [url]);
 
   function update() {
