@@ -2,12 +2,13 @@
   --text--color: #e8eaed;
   --text--color--2nd: #bcc0b9;
   --text--color--3rd: #787c82;
+  --text--color--4th:rgb(95, 95, 95)
 }
 
 table {
-  border-top: 0.5px solid rgb(95, 95, 95);
-  border-bottom: 0.5px solid rgb(95, 95, 95);
-  width: 95%;
+  border-top: 0.5px solid var(--text--color--3rd);
+  border-bottom: 0.5px solid var(--text--color--3rd);
+  width: 100%;
   margin: 100px auto;
 }
 table > thead > tr > th {
@@ -16,29 +17,32 @@ table > thead > tr > th {
   font-size: small;
   color: silver;
 }
-table > tbody > tr {
-  border: 0.5px solid rgb(95, 95, 95);
-}
 table > tbody > tr > td {
+  border-top: 0.5px solid var(--text--color--4th);
   text-align: center;
   padding: 15px;
   color: var(--text--color);
   font-weight: bold;
   font-size: medium;
 }
-table > tbody > tr > :nth-child(1) {
-  text-align: left;
+table > tbody > tr > td > span {
+    color: var(--text--color--3rd);
+    font-weight: normal;
 }
 table > tbody > tr > :nth-child(2) {
-  text-align: right;
+  text-align: left;
+  vertical-align: auto;
 }
 table > tbody > tr > :nth-child(3) {
-  font-weight: normal;
+  text-align: right;
 }
 table > tbody > tr > :nth-child(4) {
   font-weight: normal;
 }
 table > tbody > tr > :nth-child(5) {
+  font-weight: normal;
+}
+table > tbody > tr > :nth-child(6) {
   font-weight: normal;
 }
 .btn:hover {

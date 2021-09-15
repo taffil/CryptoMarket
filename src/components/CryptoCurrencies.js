@@ -42,6 +42,7 @@ function CryptoCurrencies() {
         <table className="table">
           <thead className="thead">
             <tr className="thead_row">
+              <th>#</th>
               <th>Name</th>
               <th>Price in EUR</th>
               <th>Change in 1h</th>
@@ -61,6 +62,7 @@ function CryptoCurrencies() {
           <tbody>
             {crypto.map((currency) => {
               let id = currency.id;
+              let symbol = currency.symbol;
               let name = currency.name;
               let price = currency.quote.EUR.price.toFixed(3);
               let change_1h = currency.quote.EUR.percent_change_1h.toFixed(3);
@@ -69,7 +71,8 @@ function CryptoCurrencies() {
 
               return (
                 <tr key={id}>
-                  <td>{name}</td>
+                  <td>#</td>
+                  <td> <span> {symbol} </span> {name}</td>
                   <td>€ {price}</td>
                   <td style={{ color: `${color(change_1h)}` }}>{change_1h}%</td>
                   <td style={{ color: `${color(change_24h)}` }}>
