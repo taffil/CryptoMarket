@@ -5,7 +5,7 @@ import CryptoCurrencies from "./components/CryptoCurrencies";
 
 function App() {
   return (
-    <div>
+    <div className="main">
       <CryptoCurrencies />
     </div>
   );

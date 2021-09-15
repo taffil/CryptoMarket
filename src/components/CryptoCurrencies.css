@@ -1,11 +1,46 @@
-.table {
-    border: 1px solid black;
-    width: 75%;
-    margin: 100px auto;
+:root {
+  --text--color: #e8eaed;
+  --text--color--2nd: #bcc0b9;
+  --text--color--3rd: #787c82;
 }
-table>tbody>tr>td {
-    border: 1px solid black;
+
+table {
+  border-top: 0.5px solid rgb(95, 95, 95);
+  border-bottom: 0.5px solid rgb(95, 95, 95);
+  width: 95%;
+  margin: 100px auto;
+}
+table > thead > tr > th {
+  padding: 15px;
+  font-weight: bold;
+  font-size: small;
+  color: silver;
+}
+table > tbody > tr {
+  border: 0.5px solid rgb(95, 95, 95);
+}
+table > tbody > tr > td {
+  text-align: center;
+  padding: 15px;
+  color: var(--text--color);
+  font-weight: bold;
+  font-size: medium;
+}
+table > tbody > tr > :nth-child(1) {
+  text-align: left;
+}
+table > tbody > tr > :nth-child(2) {
+  text-align: right;
+}
+table > tbody > tr > :nth-child(3) {
+  font-weight: normal;
+}
+table > tbody > tr > :nth-child(4) {
+  font-weight: normal;
+}
+table > tbody > tr > :nth-child(5) {
+  font-weight: normal;
 }
 .btn:hover {
-    cursor: pointer;
+  cursor: pointer;
 }

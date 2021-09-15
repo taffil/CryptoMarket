@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import cors from 'cors'
 
 import "./CryptoCurrencies.css";
 
@@ -10,25 +9,18 @@ function CryptoCurrencies() {
     "/v1/cryptocurrency/listings/latest" +
     "?CMC_PRO_API_KEY=" +
     "90367cf3-777f-4541-81a9-2fd2b6e4acd5" +
-    "&start=1&limit=10&convert=EUR";
+    "&start=1&limit=15&convert=EUR";
 
   const [crypto, setCrypto] = useState(null);
 
   let content = null;
   useEffect(() => {
-    axios
-      .get(url, {
-          headers: {
-            'Access-Control-Allow-Origin': 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=90367cf3-777f-4541-81a9-2fd2b6e4acd5&start=1&limit=10&convert=EUR',
-            'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-          }
-      })
-      .then((response) => {
-        setCrypto(response.data.data);
+    axios.get(url).then((response) => {
+      setCrypto(response.data.data);
 
-        //loged data
-        console.log(response);
-      });
+      //loged data
+      console.log(response);
+    });
   }, [url]);
 
   function update() {
@@ -39,14 +31,14 @@ function CryptoCurrencies() {
   if (crypto) {
     function color(props) {
       if (props > 0) {
-        props = "green";
+        props = "rgb(14, 203, 129)";
       } else {
-        props = "red";
+        props = "rgb(246, 70, 93)";
       }
       return props;
     }
     content = (
-      <div className="main">
+      <div className="crypto">
         <table className="table">
           <thead className="thead">
             <tr className="thead_row">
@@ -55,14 +47,14 @@ function CryptoCurrencies() {
               <th>Change in 1h</th>
               <th>Change in 24h</th>
               <th>
-                Last Updated
-                <button
+                Change in 7d
+                {/* <button
                   style={{ float: "right" }}
                   className="btn"
                   onClick={update}
                 >
                   Refresh
-                </button>
+                </button> */}
               </th>
             </tr>
           </thead>
@@ -73,14 +65,7 @@ function CryptoCurrencies() {
               let price = currency.quote.EUR.price.toFixed(3);
               let change_1h = currency.quote.EUR.percent_change_1h.toFixed(3);
               let change_24h = currency.quote.EUR.percent_change_24h.toFixed(3);
-              let last_updated =
-                currency.last_updated.slice(11, 19) +
-                " " +
-                currency.last_updated
-                  .slice(0, 10)
-                  .split("-")
-                  .reverse()
-                  .join("/");
+              let change_7d = currency.quote.EUR.percent_change_7d.toFixed(3)
 
               return (
                 <tr key={id}>
@@ -90,7 +75,7 @@ function CryptoCurrencies() {
                   <td style={{ color: `${color(change_24h)}` }}>
                     {change_24h}%
                   </td>
-                  <td>{last_updated}</td>
+                  <td style={{ color: `${color(change_7d)}` }}>{change_7d}</td>
                 </tr>
               );
             })}
