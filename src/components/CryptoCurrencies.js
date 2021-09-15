@@ -23,11 +23,13 @@ function CryptoCurrencies() {
     });
   }, [url]);
 
-  function update() {
-    axios.get(url).then((response) => {
-      setCrypto(response.data.data);
-    });
-  }
+//   function update() {
+//     axios.get(url).then((response) => {
+//       setCrypto(response.data.data);
+//     });
+//   }
+//   setTimeout(update, 600000);
+
   if (crypto) {
     function color(props) {
       if (props > 0) {
@@ -37,26 +39,18 @@ function CryptoCurrencies() {
       }
       return props;
     }
+
     content = (
       <div className="crypto">
         <table className="table">
           <thead className="thead">
             <tr className="thead_row">
               <th>#</th>
-              <th>Name</th>
+              <th colSpan="2">Name</th>
               <th>Price in EUR</th>
               <th>Change in 1h</th>
               <th>Change in 24h</th>
-              <th>
-                Change in 7d
-                {/* <button
-                  style={{ float: "right" }}
-                  className="btn"
-                  onClick={update}
-                >
-                  Refresh
-                </button> */}
-              </th>
+              <th>Market cap</th>
             </tr>
           </thead>
           <tbody>
@@ -67,18 +61,19 @@ function CryptoCurrencies() {
               let price = currency.quote.EUR.price.toFixed(3);
               let change_1h = currency.quote.EUR.percent_change_1h.toFixed(3);
               let change_24h = currency.quote.EUR.percent_change_24h.toFixed(3);
-              let change_7d = currency.quote.EUR.percent_change_7d.toFixed(3)
+              let market_cap = currency.quote.EUR.market_cap;
 
               return (
                 <tr key={id}>
                   <td>#</td>
-                  <td> <span> {symbol} </span> {name}</td>
+                  <td>{symbol}</td>
+                  <td>{name}</td>
                   <td>€ {price}</td>
                   <td style={{ color: `${color(change_1h)}` }}>{change_1h}%</td>
                   <td style={{ color: `${color(change_24h)}` }}>
                     {change_24h}%
                   </td>
-                  <td style={{ color: `${color(change_7d)}` }}>{change_7d}</td>
+                  <td>€ {market_cap}</td>
                 </tr>
               );
             })}
