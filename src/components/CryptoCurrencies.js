@@ -9,7 +9,7 @@ function CryptoCurrencies() {
     "/v1/cryptocurrency/listings/latest" +
     "?CMC_PRO_API_KEY=" +
     "90367cf3-777f-4541-81a9-2fd2b6e4acd5" +
-    "&start=1&limit=15&convert=EUR";
+    "&start=1&limit=30&convert=EUR";
 
   const [crypto, setCrypto] = useState(null);
 
@@ -17,8 +17,6 @@ function CryptoCurrencies() {
   useEffect(() => {
     axios.get(url).then((response) => {
       setCrypto(response.data.data);
-
-      //loged data
       console.log(response);
     });
   }, [url]);
@@ -26,9 +24,12 @@ function CryptoCurrencies() {
 //   function update() {
 //     axios.get(url).then((response) => {
 //       setCrypto(response.data.data);
+
+//       //loged data
+//       console.log(response);
 //     });
 //   }
-//   setTimeout(update, 600000);
+//   setTimeout(update(), 30000);
 
   if (crypto) {
     function color(props) {
@@ -46,17 +47,19 @@ function CryptoCurrencies() {
           <thead className="thead">
             <tr className="thead_row">
               <th>#</th>
-              <th colSpan="2">Name</th>
-              <th>Price in EUR</th>
+              <th></th>
+              <th style={{ textAlign: 'left' }}>Name</th>
+              <th style={{ textAlign: 'right' }}>Price in EUR</th>
               <th>Change in 1h</th>
               <th>Change in 24h</th>
-              <th>Market cap</th>
+              <th style={{ textAlign: 'right' }}>Market cap</th>
             </tr>
           </thead>
           <tbody>
             {crypto.map((currency) => {
               let id = currency.id;
               let symbol = currency.symbol;
+              let rank = currency.cmc_rank;
               let name = currency.name;
               let price = currency.quote.EUR.price.toFixed(3);
               let change_1h = currency.quote.EUR.percent_change_1h.toFixed(3);
@@ -65,7 +68,7 @@ function CryptoCurrencies() {
 
               return (
                 <tr key={id}>
-                  <td>#</td>
+                  <td>{rank}</td>
                   <td>{symbol}</td>
                   <td>{name}</td>
                   <td>€ {price}</td>

@@ -28,7 +28,8 @@ table > tbody > tr > td {
   font-weight: bold;
   font-size: 14px;
 }
-table > tbody > tr > :nth-child(2) {
+table > tbody > tr > :nth-child(2),
+table > tbody > tr > :nth-child(1) {
   color: var(--text--color--2nd);
   font-weight: normal;
   width: fit-content;
@@ -40,7 +41,6 @@ table > tbody > tr > :nth-child(3) {
 }
 table > tbody > tr > :nth-child(4) {
   text-align: right;
-  padding-right: 10rem;
 }
 table > tbody > tr > :nth-child(5) {
   font-weight: normal;
