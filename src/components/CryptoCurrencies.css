@@ -21,7 +21,7 @@ table > thead > tr > th {
   color: silver;
 }
 table > tbody > tr > td {
-  border-top: 0.5px solid var(--text--color--4th);
+  /* border-top: 0.5px solid var(--text--color--4th); */
   text-align: center;
   padding: 15px;
   color: var(--text--color);
