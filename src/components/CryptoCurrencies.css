@@ -44,14 +44,9 @@ table > tbody > tr > td:nth-child(3) {
 table > tbody > tr > td:nth-child(4) {
   text-align: right;
 }
-table > tbody > tr > td:nth-child(5) {
-  font-weight: normal;
-}
+table > tbody > tr > td:nth-child(5),
 table > tbody > tr > td:nth-child(6) {
   font-weight: normal;
-}
-table > tbody > tr > td:nth-child(7) {
-  text-align: right;
 }
 table > tbody > tr:nth-child(odd) {
   background-color: var(--text--color--5th);

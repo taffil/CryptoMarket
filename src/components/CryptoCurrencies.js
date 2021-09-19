@@ -4,14 +4,9 @@ import axios from "axios";
 import "./CryptoCurrencies.css";
 
 function CryptoCurrencies() {
-  //   let url =
-  //     "https://pro-api.coinmarketcap.com" +
-  //     "/v1/cryptocurrency/listings/latest" +
-  //     "?CMC_PRO_API_KEY=" +
-  //     "90367cf3-777f-4541-81a9-2fd2b6e4acd5" +
-  //     "&start=1&limit=30&convert=EUR";
   let url =
-    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=50&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d";
+    "https://api.coingecko.com/api/v3/coins/markets" +
+    "?vs_currency=eur&order=market_cap_desc&per_page=50&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d";
 
   const [crypto, setCrypto] = useState(null);
 
@@ -19,19 +14,19 @@ function CryptoCurrencies() {
   useEffect(() => {
     axios.get(url).then((response) => {
       setCrypto(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     });
   }, [url]);
 
-  //   function update() {
-  //     axios.get(url).then((response) => {
-  //       setCrypto(response.data.data);
+  function update() {
+    axios.get(url).then((response) => {
+      setCrypto(response.data);
 
-  //       //loged data
-  //       console.log(response);
-  //     });
-  //   }
-  //   setTimeout(update(), 30000);
+      //loged data
+      console.log(response.data);
+    });
+  }
+  setTimeout(update, 30000);
 
   if (crypto) {
     function color(props) {
@@ -58,6 +53,7 @@ function CryptoCurrencies() {
           </thead>
           <tbody>
             {crypto.map((currency) => {
+              
               //destructuring
               let {
                 name,
@@ -68,31 +64,25 @@ function CryptoCurrencies() {
                 market_cap_rank: rank,
                 price_change_percentage_24h: change_24h,
               } = currency;
-              //   let {
-              //     id,
-              //     name,
-              //     symbol,
-              //     cmc_rank: rank,
-              //     quote: {
-              //       EUR: {
-              //         price,
-              //         percent_change_1h: change_1h,
-              //         percent_change_24h: change_24h,
-              //         market_cap,
-              //       },
-              //     },
-              //   } = currency;
 
+              //formating currency
+              const formatter = new Intl.NumberFormat( 'en', {
+                style: 'currency',
+                currency: 'EUR',
+                notation: 'compact'
+              })
               return (
                 <tr key={rank}>
-                  <td><img src={image} alt= ""></img></td>
+                  <td>
+                    <img src={image} alt=""></img>
+                  </td>
                   <td>{symbol}</td>
                   <td>{name}</td>
                   <td>€ {price}</td>
                   <td style={{ color: `${color(change_24h)}` }}>
                     {change_24h}%
                   </td>
-                  <td>€ {market_cap}</td>
+                  <td>{formatter.format(market_cap)}</td>
                 </tr>
               );
             })}
