@@ -9,7 +9,7 @@ function CryptoCurrencies() {
     "/v1/cryptocurrency/listings/latest" +
     "?CMC_PRO_API_KEY=" +
     "90367cf3-777f-4541-81a9-2fd2b6e4acd5" +
-    "&start=1&limit=30&convert=EUR";
+    "&start=1&limit=50&convert=EUR";
 
   const [crypto, setCrypto] = useState(null);
 
@@ -50,9 +50,10 @@ function CryptoCurrencies() {
               <th></th>
               <th style={{ textAlign: 'left' }}>Name</th>
               <th style={{ textAlign: 'right' }}>Price in EUR</th>
-              <th>Change in 1h</th>
-              <th>Change in 24h</th>
+              <th>Last hour</th>
+              <th>Last 24h</th>
               <th style={{ textAlign: 'right' }}>Market cap</th>
+              <th>Last 7d</th>
             </tr>
           </thead>
           <tbody>
@@ -77,6 +78,7 @@ function CryptoCurrencies() {
                     {change_24h}%
                   </td>
                   <td>€ {market_cap}</td>
+                  <td>{`<chart>`}</td>
                 </tr>
               );
             })}
