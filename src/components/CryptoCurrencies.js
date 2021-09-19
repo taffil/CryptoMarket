@@ -43,9 +43,9 @@ function CryptoCurrencies() {
         <table className="table">
           <thead className="thead">
             <tr className="thead_row">
-              <th>#</th>
-              <th></th>
-              <th style={{ textAlign: "left" }}>Name</th>
+              <th className="icon">#</th>
+              <th className="empty"></th>
+              <th className="name" style={{ textAlign: "left" }}>Name</th>
               <th style={{ textAlign: "right" }}>Price in EUR</th>
               <th>Last 24h</th>
               <th>Market cap</th>
@@ -53,7 +53,7 @@ function CryptoCurrencies() {
           </thead>
           <tbody>
             {crypto.map((currency) => {
-              
+
               //destructuring
               let {
                 name,
@@ -76,7 +76,7 @@ function CryptoCurrencies() {
                   <td>
                     <img src={image} alt=""></img>
                   </td>
-                  <td>{symbol}</td>
+                  <td>{symbol.toUpperCase()}</td>
                   <td>{name}</td>
                   <td>€ {price}</td>
                   <td style={{ color: `${color(change_24h)}` }}>

@@ -54,3 +54,10 @@ table > tbody > tr:nth-child(odd) {
 .btn:hover {
   cursor: pointer;
 }
+
+@media (max-width:768px) {
+.name,
+table > tbody > tr > td:nth-child(3) {
+  display:none;
+}
+}
