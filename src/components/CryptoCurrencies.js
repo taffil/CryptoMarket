@@ -52,7 +52,7 @@ function CryptoCurrencies() {
               <th style={{ textAlign: 'right' }}>Price in EUR</th>
               <th>Last hour</th>
               <th>Last 24h</th>
-              <th style={{ textAlign: 'right' }}>Market cap</th>
+              <th>Market cap</th>
               <th>Last 7d</th>
             </tr>
           </thead>
