@@ -9,7 +9,7 @@ function CryptoCurrencies() {
     "/v1/cryptocurrency/listings/latest" +
     "?CMC_PRO_API_KEY=" +
     "90367cf3-777f-4541-81a9-2fd2b6e4acd5" +
-    "&start=1&limit=10&convert=EUR";
+    "&start=1&limit=30&convert=EUR";
 
   const [crypto, setCrypto] = useState(null);
 
@@ -17,7 +17,7 @@ function CryptoCurrencies() {
   useEffect(() => {
     axios.get(url).then((response) => {
       setCrypto(response.data.data);
-      console.log(response);
+      console.log(response.data.data);
     });
   }, [url]);
 
@@ -57,6 +57,7 @@ function CryptoCurrencies() {
             </tr>
           </thead>
           <tbody>
+            
             {crypto.map((currency) => {
               //destructuring
               let {
