@@ -25,8 +25,14 @@ table > tbody > tr > td {
   font-weight: 600;
   font-size: 14px;
 }
-table > tbody > tr > td:nth-child(2),
+table > tbody > tr > td > img {
+  width: 30px;
+}
 table > tbody > tr > td:nth-child(1) {
+  color: var(--text--color--2nd);
+  padding: 0;
+}
+table > tbody > tr > td:nth-child(2) {
   color: var(--text--color--2nd);
   font-weight: normal;
   padding-right: 0;

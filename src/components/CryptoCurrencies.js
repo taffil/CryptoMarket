@@ -4,20 +4,22 @@ import axios from "axios";
 import "./CryptoCurrencies.css";
 
 function CryptoCurrencies() {
+  //   let url =
+  //     "https://pro-api.coinmarketcap.com" +
+  //     "/v1/cryptocurrency/listings/latest" +
+  //     "?CMC_PRO_API_KEY=" +
+  //     "90367cf3-777f-4541-81a9-2fd2b6e4acd5" +
+  //     "&start=1&limit=30&convert=EUR";
   let url =
-    "https://pro-api.coinmarketcap.com" +
-    "/v1/cryptocurrency/listings/latest" +
-    "?CMC_PRO_API_KEY=" +
-    "90367cf3-777f-4541-81a9-2fd2b6e4acd5" +
-    "&start=1&limit=30&convert=EUR";
+    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=50&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d";
 
   const [crypto, setCrypto] = useState(null);
 
   let content = null;
   useEffect(() => {
     axios.get(url).then((response) => {
-      setCrypto(response.data.data);
-      console.log(response.data.data);
+      setCrypto(response.data);
+      console.log(response.data);
     });
   }, [url]);
 
@@ -50,45 +52,47 @@ function CryptoCurrencies() {
               <th></th>
               <th style={{ textAlign: "left" }}>Name</th>
               <th style={{ textAlign: "right" }}>Price in EUR</th>
-              <th>Last hour</th>
               <th>Last 24h</th>
               <th>Market cap</th>
-              <th>Last 7d</th>
             </tr>
           </thead>
           <tbody>
-            
             {crypto.map((currency) => {
               //destructuring
               let {
-                id,
                 name,
                 symbol,
-                cmc_rank: rank,
-                quote: {
-                  EUR: {
-                    price,
-                    percent_change_1h: change_1h,
-                    percent_change_24h: change_24h,
-                    market_cap,
-                  },
-                },
+                image,
+                current_price: price,
+                market_cap,
+                market_cap_rank: rank,
+                price_change_percentage_24h: change_24h,
               } = currency;
+              //   let {
+              //     id,
+              //     name,
+              //     symbol,
+              //     cmc_rank: rank,
+              //     quote: {
+              //       EUR: {
+              //         price,
+              //         percent_change_1h: change_1h,
+              //         percent_change_24h: change_24h,
+              //         market_cap,
+              //       },
+              //     },
+              //   } = currency;
 
               return (
-                <tr key={id}>
-                  <td>{rank}</td>
+                <tr key={rank}>
+                  <td><img src={image} alt= ""></img></td>
                   <td>{symbol}</td>
                   <td>{name}</td>
-                  <td>€ {price.toFixed(3)}</td>
-                  <td style={{ color: `${color(change_1h)}` }}>
-                    {change_1h.toFixed(3)}%
-                  </td>
+                  <td>€ {price}</td>
                   <td style={{ color: `${color(change_24h)}` }}>
-                    {change_24h.toFixed(3)}%
+                    {change_24h}%
                   </td>
                   <td>€ {market_cap}</td>
-                  <td>{`<chart>`}</td>
                 </tr>
               );
             })}
