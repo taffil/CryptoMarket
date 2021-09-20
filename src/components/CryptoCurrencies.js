@@ -41,17 +41,17 @@ function CryptoCurrencies() {
     content = (
       <div className="crypto">
         <table className="table">
-          <thead className="thead">
-            <tr className="thead_row">
+          <thead className="table_head">
+            <tr className="table_head_row">
               <th className="icon">#</th>
               <th className="empty"></th>
               <th className="name" style={{ textAlign: "left" }}>Name</th>
-              <th style={{ textAlign: "right" }}>Price in EUR</th>
-              <th>Last 24h</th>
-              <th>Market cap</th>
+              <th className="price" style={{ textAlign: "right" }}>Price in EUR</th>
+              <th className="last_24h" >Last 24h</th>
+              <th className="cap" >Market cap</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="table_body">
             {crypto.map((currency) => {
 
               //destructuring
@@ -72,17 +72,17 @@ function CryptoCurrencies() {
                 notation: 'compact'
               })
               return (
-                <tr key={rank}>
-                  <td>
+                <tr className="table_body_row" key={rank}>
+                  <td className="icon_data">
                     <img src={image} alt=""></img>
                   </td>
-                  <td>{symbol.toUpperCase()}</td>
-                  <td>{name}</td>
-                  <td>€ {price}</td>
-                  <td style={{ color: `${color(change_24h)}` }}>
+                  <td className="symbol_data">{symbol.toUpperCase()}</td>
+                  <td className="name_data">{name}</td>
+                  <td className="price_data">€ {price}</td>
+                  <td className="last24h_data" style={{ color: `${color(change_24h)}` }}>
                     {change_24h}%
                   </td>
-                  <td>{formatter.format(market_cap)}</td>
+                  <td className="cap_data">{formatter.format(market_cap)}</td>
                 </tr>
               );
             })}

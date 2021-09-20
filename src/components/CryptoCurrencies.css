@@ -25,30 +25,29 @@ table > tbody > tr > td {
   font-weight: 600;
   font-size: 14px;
 }
-table > tbody > tr > td > img {
+.icon_data > img {
   width: 30px;
 }
-table > tbody > tr > td:nth-child(1) {
-  color: var(--text--color--2nd);
+.icon_data {
   padding: 0;
 }
-table > tbody > tr > td:nth-child(2) {
+.symbol_data {
   color: var(--text--color--2nd);
   font-weight: normal;
   padding-right: 0;
   padding-left: 0;
 }
-table > tbody > tr > td:nth-child(3) {
+.name_data {
   text-align: left;
 }
-table > tbody > tr > td:nth-child(4) {
+.price_data {
   text-align: right;
 }
-table > tbody > tr > td:nth-child(5),
-table > tbody > tr > td:nth-child(6) {
+.last24h_data,
+.cap_data {
   font-weight: normal;
 }
-table > tbody > tr:nth-child(odd) {
+.table_body_row:nth-child(odd) {
   background-color: var(--text--color--5th);
 }
 .btn:hover {
