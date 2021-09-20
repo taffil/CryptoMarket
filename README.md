@@ -1,5 +1,4 @@
 Netlify host: https://cryptocurrenciesmarket.netlify.app/
-You need to download chrome extension to run the webapp https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc
 
 # Getting Started with Create React App
 
