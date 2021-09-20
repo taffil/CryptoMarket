@@ -26,7 +26,7 @@ function CryptoCurrencies() {
       console.log(response.data);
     });
   }
-  setTimeout(update, 30000);
+  setTimeout(update, 33000);
 
   if (crypto) {
     function color(props) {
