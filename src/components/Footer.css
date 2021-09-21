@@ -21,3 +21,9 @@ hr {
 .footer> span > img {
     vertical-align: middle;
 }
+
+@media (max-width:768px) {
+    hr{
+        width: 90%;
+    }
+}
