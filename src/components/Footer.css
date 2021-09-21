@@ -24,6 +24,6 @@ hr {
 
 @media (max-width:768px) {
     hr{
-        width: 90%;
+        display: none;
     }
 }

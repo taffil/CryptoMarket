@@ -20,7 +20,6 @@ const Footer = () => {
           </a>{" "}
           with {" "}<img src="logo192.png" alt="" style={{ width: "35px" }} />{" "}
         </span>
-        <hr />
       </section>
     </div>
   );
