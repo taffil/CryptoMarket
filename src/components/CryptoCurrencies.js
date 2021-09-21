@@ -14,16 +14,16 @@ function CryptoCurrencies() {
   useEffect(() => {
     axios.get(url).then((response) => {
       setCrypto(response.data);
-      // console.log(response.data);
     });
   }, [url]);
 
-  // function update() {
-  //   axios.get(url).then((response) => {
-  //     setCrypto(response.data);
-  //   });
-  // }
-  // setTimeout(update, 33000);
+  function update() {
+    axios.get(url).then((response) => {
+      setCrypto(response.data);
+      console.log(response.data);
+    });
+  }
+  setTimeout(update, 33000);
 
   if (crypto) {
     function color(props) {
@@ -42,15 +42,18 @@ function CryptoCurrencies() {
             <tr className="table_head_row">
               <th className="icon">#</th>
               <th className="empty"></th>
-              <th className="name" style={{ textAlign: "left" }}>Name</th>
-              <th className="price" style={{ textAlign: "right" }}>Price in EUR</th>
-              <th className="last_24h" >Last 24h</th>
-              <th className="cap" >Market cap</th>
+              <th className="name" style={{ textAlign: "left" }}>
+                Name
+              </th>
+              <th className="price" style={{ textAlign: "right" }}>
+                Price in EUR
+              </th>
+              <th className="last_24h">Last 24h</th>
+              <th className="cap">Market cap</th>
             </tr>
           </thead>
           <tbody className="table_body">
             {crypto.map((currency) => {
-
               //destructuring
               let {
                 name,
@@ -63,11 +66,11 @@ function CryptoCurrencies() {
               } = currency;
 
               //formating currency
-              const formatter = new Intl.NumberFormat( 'en', {
-                style: 'currency',
-                currency: 'EUR',
-                notation: 'compact'
-              })
+              const formatter = new Intl.NumberFormat("en", {
+                style: "currency",
+                currency: "EUR",
+                notation: "compact",
+              });
               return (
                 <tr className="table_body_row" key={rank}>
                   <td className="icon_data">
@@ -76,7 +79,10 @@ function CryptoCurrencies() {
                   <td className="symbol_data">{symbol.toUpperCase()}</td>
                   <td className="name_data">{name}</td>
                   <td className="price_data">€ {price}</td>
-                  <td className="last24h_data" style={{ color: `${color(change_24h)}` }}>
+                  <td
+                    className="last24h_data"
+                    style={{ color: `${color(change_24h)}` }}
+                  >
                     {change_24h}%
                   </td>
                   <td className="cap_data">{formatter.format(market_cap)}</td>
