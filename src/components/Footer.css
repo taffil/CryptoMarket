@@ -1,0 +1,14 @@
+hr {
+  border: none;
+  border-top: 2px dashed #ccc;
+  /* width: 90%; */
+  margin: auto;
+}
+.footer {
+  margin: 50px;
+  text-align: center;
+  color: #bcc0b9;
+}
+.footer>span {
+  margin: 50px;
+}
