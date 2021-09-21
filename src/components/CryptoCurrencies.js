@@ -18,15 +18,12 @@ function CryptoCurrencies() {
     });
   }, [url]);
 
-  function update() {
-    axios.get(url).then((response) => {
-      setCrypto(response.data);
-
-      //loged data
-      console.log(response.data);
-    });
-  }
-  setTimeout(update, 33000);
+  // function update() {
+  //   axios.get(url).then((response) => {
+  //     setCrypto(response.data);
+  //   });
+  // }
+  // setTimeout(update, 33000);
 
   if (crypto) {
     function color(props) {
