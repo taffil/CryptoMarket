@@ -1,14 +1,23 @@
+.footer {
+  color: #bcc0b9;
+  width: 100%;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 hr {
   border: none;
-  border-top: 2px dashed #ccc;
-  /* width: 90%; */
-  margin: auto;
+  border-top: 2px dashed #bcc0b9;
+  width: 35%;
 }
-.footer {
-  margin: 50px;
-  text-align: center;
-  color: #bcc0b9;
+.footer > span {
+  padding: 5px 0;
 }
-.footer>span {
-  margin: 50px;
+.footer > span > a {
+  text-decoration: none;
+}
+.footer> span > img {
+    vertical-align: middle;
 }
