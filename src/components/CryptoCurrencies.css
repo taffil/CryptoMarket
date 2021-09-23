@@ -6,6 +6,28 @@
   --text--color--5th: rgb(48, 49, 52);
 }
 
+.search,
+.currency {
+  margin: 20px;
+  padding: 5px;
+  float: right;
+  color: var(--text--color--2nd);
+  background-color: var(--text--color--5th);
+  border: none;
+  border-radius: 3px;
+}
+.search:focus {
+  outline-color: var(--text--color--4th);
+  outline-style: solid;
+  outline-width: 2px;
+}
+.currency {
+  background-color: transparent;
+  /* font-size: 0.8rem; */
+}
+.currency:hover {
+  cursor: pointer;
+}
 table {
   border-top: 0.5px solid var(--text--color--3rd);
   border-bottom: 0.5px solid var(--text--color--3rd);
@@ -44,7 +66,8 @@ table > tbody > tr > td {
   text-align: right;
 }
 .last24h_data,
-.cap_data {
+.cap_data,
+.volume_data {
   font-weight: normal;
 }
 .table_body_row:nth-child(odd) {
@@ -54,9 +77,16 @@ table > tbody > tr > td {
   cursor: pointer;
 }
 
-@media (max-width:768px) {
-.name,
-table > tbody > tr > td:nth-child(3) {
-  display:none;
-}
+@media (max-width: 768px) {
+  .name,
+  table > tbody > tr > td:nth-child(3) {
+    display: none;
+  }
+  .volume,
+  table > tbody > tr > td:last-child {
+    display: none;
+  }
+  .search {
+    float: left;
+  }
 }
