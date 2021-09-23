@@ -7,7 +7,7 @@
 }
 
 .search,
-.currency {
+#currency {
   margin: 20px;
   padding: 5px;
   float: right;
@@ -20,12 +20,16 @@
   outline-color: var(--text--color--4th);
   outline-style: solid;
   outline-width: 2px;
+  border-radius: 0;
 }
-.currency {
+#currency {
+  margin: 20px 20px 20px 0;
+  padding: 5px;
+  float: right;
   background-color: transparent;
-  /* font-size: 0.8rem; */
+  color: var(--text--color--3rd);
 }
-.currency:hover {
+#currency:hover {
   cursor: pointer;
 }
 table {

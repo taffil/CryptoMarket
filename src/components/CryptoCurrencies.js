@@ -18,14 +18,6 @@ function CryptoCurrencies() {
     });
   }, [url]);
 
-  function update() {
-    axios.get(url).then((response) => {
-      setCrypto(response.data);
-      console.log(response.data);
-    });
-  }
-  setTimeout(update, 33000);
-
   if (crypto) {
     function color(props) {
       if (props > 0) {
@@ -36,9 +28,39 @@ function CryptoCurrencies() {
       return props;
     }
 
+    function selectCurrency() {
+      let selectedValue = document.querySelector("#currency").value;
+      console.log(selectedValue);
+      let url =
+        "https://api.coingecko.com/api/v3/coins/markets" +
+        `?vs_currency=${selectedValue}&order=market_cap_desc&per_page=50&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d`;
+      axios.get(url).then((response) => {
+        setCrypto(response.data);
+        console.log(response.data[0].current_price);
+      });
+      return url;
+    }
+
+    function update() {
+      let selectedValue = document.querySelector("#currency").value;
+      axios
+        .get(
+          "https://api.coingecko.com/api/v3/coins/markets" +
+            `?vs_currency=${selectedValue}&order=market_cap_desc&per_page=50&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d`
+        )
+        .then((response) => {
+          setCrypto(response.data);
+          console.log(response.data[0].current_price);
+        });
+    }
+    setTimeout(update, 33000);
+
     content = (
       <div className="crypto">
-        <button className="currency">USD</button>
+        <select id="currency" onChange={selectCurrency}>
+          <option value="eur">Prices in EUR</option>
+          <option value="usd">Prices in USD</option>
+        </select>
         <input
           className="search"
           type="text"
@@ -58,7 +80,7 @@ function CryptoCurrencies() {
                 Name
               </th>
               <th className="price" style={{ textAlign: "right" }}>
-                Price in EUR
+                Price
               </th>
               <th className="last_24h">Last 24h</th>
               <th className="cap">Market cap</th>
@@ -67,16 +89,9 @@ function CryptoCurrencies() {
           </thead>
           <tbody className="table_body">
             {crypto
-              .filter((val) => {
-                //filtering search
-                if (searchTerm === "") {
-                  return val;
-                } else if (
-                  val.name.toLowerCase().includes(searchTerm.toLowerCase())
-                ) {
-                  return val;
-                }
-              })
+              .filter((val) =>
+                val.name.toLowerCase().includes(searchTerm.toLowerCase())
+              )
               .map((currency) => {
                 //destructuring
                 let {
@@ -92,8 +107,7 @@ function CryptoCurrencies() {
 
                 //formating currency
                 const formatter = new Intl.NumberFormat("en", {
-                  style: "currency",
-                  currency: "EUR",
+                  style: "decimal",
                   notation: "compact",
                 });
                 return (
@@ -103,7 +117,7 @@ function CryptoCurrencies() {
                     </td>
                     <td className="symbol_data">{symbol.toUpperCase()}</td>
                     <td className="name_data">{name}</td>
-                    <td className="price_data">€ {price}</td>
+                    <td className="price_data">{price}</td>
                     <td
                       className="last24h_data"
                       style={{ color: `${color(change_24h)}` }}
