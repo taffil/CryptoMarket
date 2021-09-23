@@ -30,6 +30,7 @@ function CryptoCurrencies() {
 
     function selectCurrency() {
       let selectedValue = document.querySelector("#currency").value;
+      let priceSymbol = document.querySelector(".price");
       console.log(selectedValue);
       let url =
         "https://api.coingecko.com/api/v3/coins/markets" +
@@ -38,6 +39,7 @@ function CryptoCurrencies() {
         setCrypto(response.data);
         console.log(response.data[0].current_price);
       });
+      priceSymbol.innerHTML = `Prices in ${selectedValue.toUpperCase()}`;
       return url;
     }
 
@@ -58,8 +60,8 @@ function CryptoCurrencies() {
     content = (
       <div className="crypto">
         <select id="currency" onChange={selectCurrency}>
-          <option value="eur">Prices in EUR</option>
-          <option value="usd">Prices in USD</option>
+          <option value="eur">EUR</option>
+          <option value="usd">USD</option>
         </select>
         <input
           className="search"
@@ -80,7 +82,7 @@ function CryptoCurrencies() {
                 Name
               </th>
               <th className="price" style={{ textAlign: "right" }}>
-                Price
+                Prices in EUR
               </th>
               <th className="last_24h">Last 24h</th>
               <th className="cap">Market cap</th>
