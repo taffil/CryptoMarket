@@ -10,13 +10,13 @@ function CryptoCurrencies() {
 
   const [crypto, setCrypto] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [currency, setCurrency] = useState('EUR');
+  const [currency, setCurrency] = useState("EUR");
 
   const returnSymbol = (value) => {
-    if (value === 'EUR') {
-      return '€';
-    } else if (value === 'USD') {
-      return '$';
+    if (value === "EUR") {
+      return "€";
+    } else if (value === "USD") {
+      return "$";
     }
   };
 
@@ -40,7 +40,7 @@ function CryptoCurrencies() {
 
   const selectCurrency = (value) => {
     let url =
-      'https://api.coingecko.com/api/v3/coins/markets' +
+      "https://api.coingecko.com/api/v3/coins/markets" +
       `?vs_currency=${value}&order=market_cap_desc&per_page=50&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d`;
     axios.get(url).then((response) => {
       const data = response.data.map((item) => {
@@ -61,7 +61,10 @@ function CryptoCurrencies() {
       )
       .then((response) => {
         const data = response.data.map((item) => {
-          return { ...item, currency_name: returnSymbol(selectedValue.toUpperCase()) };
+          return {
+            ...item,
+            currency_name: returnSymbol(selectedValue.toUpperCase()),
+          };
         });
         setCrypto(data);
         // console.log(response.data[0].current_price);
@@ -134,15 +137,24 @@ function CryptoCurrencies() {
                   </td>
                   <td className="symbol_data">{symbol.toUpperCase()}</td>
                   <td className="name_data">{name}</td>
-                  <td className="price_data"> {currency_name}{price}</td>
+                  <td className="price_data">
+                    {currency_name}
+                    {price}
+                  </td>
                   <td
                     className="last24h_data"
                     style={{ color: `${color(change_24h)}` }}
                   >
                     {change_24h}%
                   </td>
-                  <td className="cap_data"> {currency_name}{formatter.format(market_cap)}</td>
-                  <td className="volume_data"> {currency_name}{formatter.format(volume)}</td>
+                  <td className="cap_data">
+                    {currency_name}
+                    {formatter.format(market_cap)}
+                  </td>
+                  <td className="volume_data">
+                    {currency_name}
+                    {formatter.format(volume)}
+                  </td>
                 </tr>
               );
             })}
