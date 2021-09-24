@@ -55,11 +55,12 @@ function CryptoCurrencies() {
           console.log(response.data[0].current_price);
         });
     }
+
     setTimeout(update, 33000);
 
     content = (
       <div className="crypto">
-        <select id="currency" onChange={selectCurrency}>
+        <select id="currency" value="eur" onChange={selectCurrency}>
           <option value="eur">EUR</option>
           <option value="usd">USD</option>
         </select>
@@ -112,6 +113,7 @@ function CryptoCurrencies() {
                   style: "decimal",
                   notation: "compact",
                 });
+
                 return (
                   <tr className="table_body_row" key={rank}>
                     <td className="icon_data">
