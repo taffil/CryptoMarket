@@ -60,7 +60,7 @@ function CryptoCurrencies() {
 
     content = (
       <div className="crypto">
-        <select id="currency" value="eur" onChange={selectCurrency}>
+        <select id="currency" onChange={selectCurrency}>
           <option value="eur">EUR</option>
           <option value="usd">USD</option>
         </select>
