@@ -8,7 +8,21 @@ function CryptoCurrencies() {
     "https://api.coingecko.com/api/v3/coins/markets" +
     "?vs_currency=eur&order=market_cap_desc&per_page=50&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d";
 
-  const [crypto, setCrypto] = useState([]);
+  const defaultState = [
+    {
+      name: "Loading...",
+      current_price: "Laoding...",
+      market_cap: "Loading...",
+      total_volume: "Loading...",
+      price_change_percentage_24h: "Loading...",
+      symbol: "Loading...",
+      currency_name: "Loading...",
+      image: "Loading...",
+      market_cap_rank: "Loading...",
+    },
+  ];
+
+  const [crypto, setCrypto] = useState(defaultState);
   const [searchTerm, setSearchTerm] = useState("");
   const [currency, setCurrency] = useState("EUR");
 
@@ -67,7 +81,6 @@ function CryptoCurrencies() {
           };
         });
         setCrypto(data);
-        // console.log(response.data[0].current_price);
       });
   }
 
