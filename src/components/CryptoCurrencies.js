@@ -25,6 +25,7 @@ function CryptoCurrencies() {
   const [crypto, setCrypto] = useState(defaultState);
   const [searchTerm, setSearchTerm] = useState("");
   const [currency, setCurrency] = useState("EUR");
+  const [favorites, setFavorites] = useState([]);
 
   const returnSymbol = (value) => {
     if (value === "EUR") {
@@ -86,6 +87,30 @@ function CryptoCurrencies() {
 
   setTimeout(update, 33000);
 
+  const favoriteCryptos = (currency) => {
+    if ([...favorites].includes(currency)) {
+      return [];
+    } else {
+      const newFavorites = [...favorites, currency];
+      setFavorites(newFavorites);
+      console.log(newFavorites);
+    }
+    return favorites;
+  };
+
+  const removeFavoriteCryptos = (currency) => {
+    if (![...favorites].includes(currency)) {
+      return [];
+    } else {
+      const newFavorites = favorites.filter(
+        (favorite) => favorite.market_cap_rank !== currency.market_cap_rank
+      );
+      setFavorites(newFavorites);
+      console.log(newFavorites);
+    }
+    return favorites;
+  };
+
   return (
     <div className="crypto">
       <select id="currency" onChange={(e) => selectCurrency(e.target.value)}>
@@ -146,9 +171,18 @@ function CryptoCurrencies() {
               return (
                 <tr className="table_body_row" key={rank}>
                   <td className="icon_data">
-                    <img src={image} alt=""></img>
+                    <img
+                      onClick={() => favoriteCryptos(currency)}
+                      src={image}
+                      alt=""
+                    ></img>
                   </td>
-                  <td className="symbol_data">{symbol.toUpperCase()}</td>
+                  <td
+                    className="symbol_data"
+                    onClick={() => removeFavoriteCryptos(currency)}
+                  >
+                    {symbol.toUpperCase()}
+                  </td>
                   <td className="name_data">{name}</td>
                   <td className="price_data">
                     {currency_name}
