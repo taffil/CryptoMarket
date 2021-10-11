@@ -25,7 +25,7 @@ function CryptoCurrencies() {
   const [crypto, setCrypto] = useState(defaultState);
   const [searchTerm, setSearchTerm] = useState("");
   const [currency, setCurrency] = useState("EUR");
-  const [favorites, setFavorites] = useState([]);
+  // const [favorites, setFavorites] = useState([]);
 
   const returnSymbol = (value) => {
     if (value === "EUR") {
@@ -87,29 +87,23 @@ function CryptoCurrencies() {
 
   setTimeout(update, 33000);
 
-  const favoriteCryptos = (currency) => {
-    if ([...favorites].includes(currency)) {
-      return [];
-    } else {
-      const newFavorites = [...favorites, currency];
-      setFavorites(newFavorites);
-      console.log(newFavorites);
-    }
-    return favorites;
-  };
+  // const favoriteCryptos = (currency) => {
+  //   if ([...favorites].find((favorite) => favorite?.id === currency?.id))
+  //     return;
 
-  const removeFavoriteCryptos = (currency) => {
-    if (![...favorites].includes(currency)) {
-      return [];
-    } else {
-      const newFavorites = favorites.filter(
-        (favorite) => favorite.market_cap_rank !== currency.market_cap_rank
-      );
-      setFavorites(newFavorites);
-      console.log(newFavorites);
-    }
-    return favorites;
-  };
+  //   setFavorites((favorites) => {
+  //     return [...favorites, currency];
+  //   });
+  // };
+
+  // const removeFavoriteCryptos = (currency) => {
+  //   if (![...favorites].find((favorite) => favorite?.id === currency?.id))
+  //     return;
+
+  //   setFavorites((favorites) => {
+  //     return favorites.filter((favorite) => favorite.id !== currency.id);
+  //   });
+  // };
 
   return (
     <div className="crypto">
@@ -172,14 +166,14 @@ function CryptoCurrencies() {
                 <tr className="table_body_row" key={rank}>
                   <td className="icon_data">
                     <img
-                      onClick={() => favoriteCryptos(currency)}
+                      // onClick={() => favoriteCryptos(currency)}
                       src={image}
                       alt=""
                     ></img>
                   </td>
                   <td
                     className="symbol_data"
-                    onClick={() => removeFavoriteCryptos(currency)}
+                    // onClick={() => removeFavoriteCryptos(currency)}
                   >
                     {symbol.toUpperCase()}
                   </td>
