@@ -1,4 +1,6 @@
-Netlify host: https://cryptocurrenciesmarket.netlify.app/
+## Demo here
+
+https://cryptocurrenciesmarket.netlify.app/
 
 # Getting Started with Create React App
 
